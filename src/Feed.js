@@ -6,7 +6,7 @@ import InputOption from './InputOption'
 import { CalendarViewDay, EventNote, Subscriptions } from '@mui/icons-material'
 import Post from './Post'
 import { db } from './firebase.js'
-import { collection, doc, onSnapshot, addDoc, Timestamp } from "firebase/firestore";
+import { collection, doc, onSnapshot, addDoc, Timestamp, query, orderBy } from "firebase/firestore";
 
 
 function Feed() {
@@ -15,7 +15,7 @@ function Feed() {
 
   /* function to get all tasks from firestore in realtime */
   useEffect(() => {
-    const taskCollectionRef = collection(db, 'posts');
+    const taskCollectionRef = query(collection(db, 'posts'), orderBy('timestamp', 'desc'));
 
     onSnapshot(taskCollectionRef, (snapshot) => {
       setPosts(snapshot.docs.map(doc => ({
@@ -37,7 +37,7 @@ function Feed() {
         timestamp: Timestamp.now()
         // created: Timestamp.now()
       })
-
+      setInput('')
     } catch (err) {
       alert(err)
     }
@@ -49,7 +49,7 @@ function Feed() {
         <div className="feed__input">
           <CreateIcon />
           <form onSubmit={sendPost}>
-            <input onChange={e => setInput(e.target.value)} type="text" />
+            <input onChange={e => setInput(e.target.value)} value={input} type="text" />
             <button type='submit'>Send</button>
           </form>
         </div>
@@ -61,12 +61,15 @@ function Feed() {
         </div>
       </div>
 
-      {posts.map((post) => {
-        return <Post />
+      {posts.map(({ id, data: { name, description, message, photoUrl } }) => {
+        return <Post
+          key={id}
+          name={name}
+          description={description}
+          message={message}
+          photoUrl={photoUrl}
+        />
       })}
-
-      <Post name='sonny sangha' description='test' message='wow this worked' />
-
     </div>
   )
 }
