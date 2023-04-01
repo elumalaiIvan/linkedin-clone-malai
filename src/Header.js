@@ -5,33 +5,34 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import HomeIcon from '@mui/icons-material/Home';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import HeaderOption from './HeaderOption';
-import { BusinessCenter, Chat, Notifications} from '@mui/icons-material';
+import { BusinessCenter, Chat, Notifications } from '@mui/icons-material';
 import avatar from './avatar.png'
 
 function Header() {
   return (
     <div className='header'>
-        <div className="header__left">
+      <div className="header__left">
         <LinkedInIcon className="linkedInIcon" />
+        {/* <img src="https://www.freepnglogos.com/uploads/linkedin-blue-style-logo-png-0.png" alt="" /> */}
 
-            <div className="header__search">
-                {/* search icon */}
-                
-                <SearchIcon />
-                <input type="text" />
-            </div>
+        <div className="header__search">
+          {/* search icon */}
 
-
+          <SearchIcon />
+          <input placeholder='Search' type="text" />
         </div>
-        <div className="header__right">
-          <HeaderOption Icon={HomeIcon} title="Home" />
-          <HeaderOption Icon={SupervisorAccountIcon} title="My Network" />
-          <HeaderOption Icon={BusinessCenter} title="Jobs" />
-          <HeaderOption Icon={Chat} title="Messaging" />
-          <HeaderOption Icon={Notifications} title="Notifications" />
-          <HeaderOption avatar={avatar} title="me"/>
 
-        </div>
+
+      </div>
+      <div className="header__right">
+        <HeaderOption Icon={HomeIcon} title="Home" />
+        <HeaderOption Icon={SupervisorAccountIcon} title="My Network" />
+        <HeaderOption Icon={BusinessCenter} title="Jobs" />
+        <HeaderOption Icon={Chat} title="Messaging" />
+        <HeaderOption Icon={Notifications} title="Notifications" />
+        <HeaderOption avatar={avatar} title="me" />
+
+      </div>
 
     </div>
   )
