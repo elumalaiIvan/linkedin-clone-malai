@@ -11,13 +11,13 @@
     margin-bottom: 10px;
 }
 
-.sidebar__top > h4 {
+.sidebar__top>h4 {
     color: gray;
     font-size: 12px;
     padding: 0px 10px 0px 10px;
 }
 
-.sidebar__top > h2 {
+.sidebar__top>h2 {
     font-size: 18px;
 }
 
@@ -32,7 +32,8 @@
     background-color: white;
     padding-bottom: 10px;
 }
-.sidebar__top > img {
+
+.sidebar__top>img {
     margin-bottom: -20px;
     width: 100%;
     height: 80px;
@@ -57,7 +58,7 @@
 
 }
 
-.sidebar__stat > p {
+.sidebar__stat>p {
     color: gray;
     font-size: 13px;
     font-weight: 600;
@@ -65,7 +66,7 @@
 
 .sidebar__statNumber {
     font-weight: bold;
-    color: #0a66c2 !important ;
+    color: #0a66c2 !important;
 }
 
 .sidebar__bottom {
@@ -87,7 +88,7 @@
     padding: 5px;
 }
 
-.sidebar__bottom > p {
+.sidebar__bottom>p {
     font-size: 13px;
     padding-bottom: 10px;
 }

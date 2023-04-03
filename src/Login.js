@@ -4,12 +4,13 @@ import { useDispatch } from 'react-redux'
 import { login } from './features/userSlice'
 import { auth } from './firebase'
 import './Login.css'
+import useInput from './useInput.js'
 
 function Login() {
-    const [email, setEmail] = React.useState('')
-    const [password, setPassword] = React.useState('')
-    const [name, setName] = React.useState('')
-    const [profilePicture, setProfilePicture] = React.useState()
+    const [email, onEmailChange] = useInput("")
+    const [password, onPasswordChange] = useInput('')
+    const [name, onNameChange] = useInput('')
+    const [profilePicture, onProfilePictureChange] = useInput("")
     const dispatch = useDispatch()
 
     const loginToApp = (e) => {
@@ -52,10 +53,10 @@ function Login() {
         <div className='login'>
             <img src="https://1000logos.net/wp-content/uploads/2017/03/Linkedin-Logo-2003.png" alt="" />
             <form action="">
-                <input value={name} onChange={e => setName(e.target.value)} placeholder='Full name (required if registering)' type="text" />
-                <input value={profilePicture} onChange={e => setProfilePicture(e.target.value)} placeholder='Profile picture(Optional)' type="text" />
-                <input value={email} onChange={e => setEmail(e.target.value)} placeholder='Email' type="email" />
-                <input value={password} onChange={e => setPassword(e.target.value)} placeholder='Password' type="password" />
+                <input value={name} onChange={onNameChange} placeholder='Full name (required if registering)' type="text" />
+                <input value={profilePicture} onChange={onProfilePictureChange} placeholder='Profile picture(Optional)' type="text" />
+                <input value={email} onChange={onEmailChange} placeholder='Email' type="email" />
+                <input value={password} onChange={onPasswordChange} placeholder='Password' type="password" />
 
                 <button type="submit" onClick={loginToApp}>Sign In</button>
             </form>
