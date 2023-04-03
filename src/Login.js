@@ -17,11 +17,12 @@ function Login() {
 
         signInWithEmailAndPassword(auth, email, password)
             .then((userAuth) => {
+                console.log(`logged in ${JSON.stringify(userAuth)}`)
                 dispatch(login({
                     email: userAuth.user.email,
                     uid: userAuth.user.uid,
                     displayName: userAuth.user.displayName,
-                    photoUrl: userAuth.user.photoUrl
+                    photoUrl: userAuth.user.photoURL
                 }))
             }).catch((error) => alert(error))
         // window.location.href = '/login'
@@ -34,9 +35,9 @@ function Login() {
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((userAuth) => {
-                updateProfile(userAuth, {
+                updateProfile(userAuth.user, {
                     displayName: name,
-                    photoUrl: profilePicture
+                    photoURL: profilePicture
                 })
                 dispatch(login({
                     email: email,

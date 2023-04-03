@@ -7,9 +7,12 @@ import { CalendarViewDay, EventNote, Subscriptions } from '@mui/icons-material'
 import Post from './Post'
 import { db } from './firebase.js'
 import { collection, doc, onSnapshot, addDoc, Timestamp, query, orderBy } from "firebase/firestore";
+import { useSelector } from 'react-redux'
+import { selectUser } from './features/userSlice'
 
 
 function Feed() {
+  const user = useSelector(selectUser)
   const [input, setInput] = useState("");
   const [posts, setPosts] = useState([])
 
@@ -30,10 +33,10 @@ function Feed() {
     e.preventDefault()
     try {
       await addDoc(collection(db, 'posts'), {
-        name: 'malai',
-        description: 'test',
+        name: user.displayName,
+        description: user.email,
         message: input,
-        photoUrl: '',
+        photoUrl: user.photoUrl || "",
         timestamp: Timestamp.now()
         // created: Timestamp.now()
       })
