@@ -17,8 +17,10 @@ function Header() {
 
   const logoutApp = (e) => {
     console.log('logout app')
-    dispatch(logout)
-    signOut(auth)
+    signOut(auth).then(() => {
+      dispatch(logout)
+    })
+
   }
 
   return (
